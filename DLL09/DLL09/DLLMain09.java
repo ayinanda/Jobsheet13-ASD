@@ -22,14 +22,19 @@ public class DLLMain09 {
         int pilihan;
         
         do {
-            System.out.println();
-            System.out.println("\n===== MENU DOUBLE LINKED LIST MAHASISWA =====");
-            System.out.println("1. Tambah di Awal");
-            System.out.println("2. Tambah di Akhir");
-            System.out.println("3. Hapus di Awal");
-            System.out.println("4. Hapus di Akhir");
-            System.out.println("5. Tampilkan Data");    
-            System.out.println("6. Cari Mahasiswa berdasarkan NIM");
+            System.out.println("\n====== MENU DOUBLE LINKED LIST ======");
+            System.out.println("1. Tambah data di awal");
+            System.out.println("2. Tambah data di akhir");
+            System.out.println("3. Tambah data di indeks tertentu");
+            System.out.println("4. Hapus data pertama");
+            System.out.println("5. Hapus data terakhir");
+            System.out.println("6. Hapus data setelah NIM tertentu");
+            System.out.println("7. Hapus data di indeks tertentu");
+            System.out.println("8. Tampilkan semua data");
+            System.out.println("9. Tampilkan data pertama");
+            System.out.println("10.Tampilkan data terakhir");
+            System.out.println("11.Tampilkan data di indeks tertentu");
+            System.out.println("12.Tampilkan jumlah data (size)");
             System.out.println("0. Keluar");
             System.out.print("Pilih menu: ");
             pilihan = scan09.nextInt();
@@ -47,7 +52,11 @@ public class DLLMain09 {
                 break;
             }
             case 3: {
-                list.removeFirst();
+                System.out.print("Masukkan indeks: ");
+                int index = scan09.nextInt();
+                scan09.nextLine();
+                Mahasiswa09 mhs = inputMahasiswa(scan09);
+                list.add(index, mhs);
                 break;
             }
             case 4: {
@@ -59,21 +68,46 @@ public class DLLMain09 {
                 break;
             }
             case 6: {
-                System.out.print("Masukkan NIM yang dicari: ");
-                String nim = scan09.nextLine();
-                Node09 found = list.search(nim);
-                if (found != null) {
-                    System.out.println("Data ditemukan:");
-                    found.data.tampil();
-                } else {
-                    System.out.println("Data tidak ditemukan.");
-                }
+                System.out.print("Masukkan NIM yang ingin dihapus: ");
+                String keyNim = scan09.nextLine();
+                list.removeAfter(keyNim);
+                break;
+            }
+            case 7: {
+                System.out.print("Masukkan indeks yang ingin dihapus: ");
+                int index = scan09.nextInt();
+                scan09.nextLine();
+                list.remove(index);
+                break;
+            }
+            case 8: {
+                list.print();
+                break;
+            }
+            case 9: {
+                list.getFirst();
+                break;
+            }
+            case 10: {
+                list.getLast();
+                break;
+            }
+            case 11: {
+                System.out.print("Masukkan indeks yang ingin ditampilkan: ");
+                int index = scan09.nextInt();
+                scan09.nextLine();
+                list.getIndex(index);
+                break;
+            }
+            case 12: {
+                System.out.println("Jumlah data (size): " + list.size());
                 break;
             }
             case 0: {
                 System.out.println("Keluar dari program.");
                 break;
-            }default: {
+            }
+            default: {
                 System.out.println("Pilihan tidak valid.");
                 break;
             }
