@@ -21,11 +21,11 @@ public class BinaryTree09 {
             Node09 current = root;
             Node09 parent = null;
             while (true) {
-                parent = current;
-                if (mahasiswa.ipk < current.mahasiswa.ipk) {
-                    current = current.left;
-                    if (current == null) {
-                        parent.left = newNode;
+                parent = current; 
+                if (mahasiswa.ipk < current.mahasiswa.ipk) { 
+                    current = current.left; 
+                    if (current == null) { 
+                        parent.left = newNode;  
                         return;
                     }
                 } else {
@@ -74,12 +74,12 @@ public class BinaryTree09 {
             node.mahasiswa.tampilInformasi();
         }
     }
-    Node09 getSuccessor(Node09 del) {
-        Node09 successor = del.right;
-        Node09 successorParent = del;
-        while (successor.left != null) {
-            successorParent = successor;
-            successor = successor.left;
+    Node09 getSuccessor(Node09 del) { 
+        Node09 successor = del.right; 
+        Node09 successorParent = del; 
+        while (successor.left != null) { 
+            successorParent = successor; 
+            successor = successor.left; 
         }
         if (successor != del.right) {
             successorParent.left = successor.right;
